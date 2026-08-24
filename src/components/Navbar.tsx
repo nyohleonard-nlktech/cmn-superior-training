@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <div className="relative w-12 h-12 rounded-full border-2 border-[#D4AF37] overflow-hidden shadow-md group-hover:border-[#E5C158] transition-colors">
               <img
-                src="/src/assets/images/cmn_logo_1787567055631.jpg"
+                src="/images/cmn_logo_1787567055631.jpg"
                 alt="CMN Superior Quality Training Logo"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

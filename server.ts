@@ -78,7 +78,7 @@ const defaultDb = {
       price: 2500,
       description_en: 'High-foaming, durable, premium cold-process laundry soap bars made with refined palm kernel oil.',
       description_fr: 'Pain de savon de ménage saponifié à froid, riche en mousse, très résistant.',
-      photo_url: '/src/assets/images/soap_production_1787567070599.jpg',
+      photo_url: '/images/soap_production_1787567070599.jpg',
       category: 'soap',
       in_stock: true,
       unit: 'Pack of 5 bars (200g each)'
@@ -90,7 +90,7 @@ const defaultDb = {
       price: 1500,
       description_en: 'Formulated with pure shea butter, neem, turmeric, and tea tree extracts. Deeply cleanses and moisturizes.',
       description_fr: 'Formulé au pur beurre de karité, neem, curcuma et extrait d’arbre à thé. Purifie et hydrate.',
-      photo_url: '/src/assets/images/soap_production_1787567070599.jpg',
+      photo_url: '/images/soap_production_1787567070599.jpg',
       category: 'soap',
       in_stock: true,
       unit: '150g bar'
@@ -102,7 +102,7 @@ const defaultDb = {
       price: 3500,
       description_en: 'Laboratory grade high-purity caustic soda flakes for soap manufacturing. Guaranteed 99% purity.',
       description_fr: 'Soude caustique en écailles de qualité industrielle supérieure 99% de pureté pour savonnerie.',
-      photo_url: '/src/assets/images/raw_materials_1787567125868.jpg',
+      photo_url: '/images/raw_materials_1787567125868.jpg',
       category: 'raw_material',
       in_stock: true,
       unit: '1 kg container'
@@ -114,7 +114,7 @@ const defaultDb = {
       price: 7500,
       description_en: 'High lauric acid content oil essential for intense foaming and rock-hard soap bars.',
       description_fr: 'Huile riche en acide laurique indispensable pour obtenir un savon dur et ultra moussant.',
-      photo_url: '/src/assets/images/raw_materials_1787567125868.jpg',
+      photo_url: '/images/raw_materials_1787567125868.jpg',
       category: 'raw_material',
       in_stock: true,
       unit: '5 Litres Bidon'
@@ -126,7 +126,7 @@ const defaultDb = {
       price: 6000,
       description_en: 'Aromatic food and cosmetic grade 100% natural cocoa butter extracted from select Cameroonian cocoa beans.',
       description_fr: 'Beurre de cacao 100% naturel pressé à partir de fèves camerounaises sélectionnées.',
-      photo_url: '/src/assets/images/chocolate_craft_1787567084584.jpg',
+      photo_url: '/images/chocolate_craft_1787567084584.jpg',
       category: 'food_ingredients',
       in_stock: true,
       unit: '1 kg block'
@@ -138,7 +138,7 @@ const defaultDb = {
       price: 4500,
       description_en: 'Concentrated cosmetic fragrances resistant to high lye pH for long-lasting luxury aroma.',
       description_fr: 'Parfums cosmétiques concentrés résistant au pH de la soude pour une fragrance durable.',
-      photo_url: '/src/assets/images/raw_materials_1787567125868.jpg',
+      photo_url: '/images/raw_materials_1787567125868.jpg',
       category: 'raw_material',
       in_stock: true,
       unit: '3 x 100ml bottles'
@@ -150,7 +150,7 @@ const defaultDb = {
       price: 18000,
       description_en: 'Heavy-duty 1.5kg capacity soap mold with food-grade silicone insert and stainless steel adjustable wire cutter.',
       description_fr: 'Moule professionnel 1,5 kg avec insert silicone alimentaire et coupeur réglable en fil inox.',
-      photo_url: '/src/assets/images/soap_production_1787567070599.jpg',
+      photo_url: '/images/soap_production_1787567070599.jpg',
       category: 'equipment',
       in_stock: true,
       unit: 'Complete Set'
@@ -347,7 +347,7 @@ app.post('/api/products', (req, res) => {
     price: Number(req.body.price) || 0,
     description_en: req.body.description_en || '',
     description_fr: req.body.description_fr || '',
-    photo_url: req.body.photo_url || '/src/assets/images/raw_materials_1787567125868.jpg',
+    photo_url: req.body.photo_url || '/images/raw_materials_1787567125868.jpg',
     category: req.body.category || 'soap',
     in_stock: req.body.in_stock !== false,
     unit: req.body.unit || '1 unit'

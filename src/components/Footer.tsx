@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, setCurrentTab, settings })
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full border border-[#D4AF37] overflow-hidden">
                 <img
-                  src="/src/assets/images/cmn_logo_1787567055631.jpg"
+                  src="/images/cmn_logo_1787567055631.jpg"
                   alt="CMN Logo"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

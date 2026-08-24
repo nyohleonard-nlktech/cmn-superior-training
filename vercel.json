@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/registrations/:id/paid",
+      "destination": "/api/registrations/[id]/paid"
+    },
+    {
+      "source": "/api/registrations/:id/completed",
+      "destination": "/api/registrations/[id]/completed"
+    },
+    {
+      "source": "/api/registrations/:id",
+      "destination": "/api/registrations/[id]"
+    },
+    {
+      "source": "/api/products/:id",
+      "destination": "/api/products/[id]"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

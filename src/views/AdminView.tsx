@@ -101,7 +101,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
     price: 3500,
     description_en: '',
     description_fr: '',
-    photo_url: '/src/assets/images/raw_materials_1787567125868.jpg',
+    photo_url: '/images/raw_materials_1787567125868.jpg',
     category: 'soap',
     in_stock: true,
     unit: '1 unit'
@@ -370,11 +370,11 @@ export const AdminView: React.FC<AdminViewProps> = ({
   ).length;
 
   const presetPhotos = [
-    { label: 'Soap Bars', url: '/src/assets/images/soap_production_1787567070599.jpg' },
-    { label: 'Raw Chemicals / Oils', url: '/src/assets/images/raw_materials_1787567125868.jpg' },
-    { label: 'Chocolate Craft', url: '/src/assets/images/chocolate_craft_1787567084584.jpg' },
-    { label: 'Ovaltine Powder', url: '/src/assets/images/ovaltine_malt_1787567096754.jpg' },
-    { label: 'Spaghetti Pasta', url: '/src/assets/images/spaghetti_making_1787567110671.jpg' }
+    { label: 'Soap Bars', url: '/images/soap_production_1787567070599.jpg' },
+    { label: 'Raw Chemicals / Oils', url: '/images/raw_materials_1787567125868.jpg' },
+    { label: 'Chocolate Craft', url: '/images/chocolate_craft_1787567084584.jpg' },
+    { label: 'Ovaltine Powder', url: '/images/ovaltine_malt_1787567096754.jpg' },
+    { label: 'Spaghetti Pasta', url: '/images/spaghetti_making_1787567110671.jpg' }
   ];
 
   // If not logged in, show Password prompt
@@ -1100,7 +1100,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
                     price: 3500,
                     description_en: '',
                     description_fr: '',
-                    photo_url: '/src/assets/images/raw_materials_1787567125868.jpg',
+                    photo_url: '/images/raw_materials_1787567125868.jpg',
                     category: 'soap',
                     in_stock: true,
                     unit: '1 unit'

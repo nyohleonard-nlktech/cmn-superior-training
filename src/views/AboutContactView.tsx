@@ -90,7 +90,7 @@ export const AboutContactView: React.FC<AboutContactViewProps> = ({ lang, settin
         <div className="lg:col-span-5 space-y-4">
           <div className="rounded-3xl overflow-hidden border-3 border-[#D4AF37] shadow-2xl bg-[#24140D]">
             <img
-              src="/src/assets/images/cmn_logo_1787567055631.jpg"
+              src="/images/cmn_logo_1787567055631.jpg"
               alt="CMN Crest"
               className="w-full h-80 object-cover"
               referrerPolicy="no-referrer"
