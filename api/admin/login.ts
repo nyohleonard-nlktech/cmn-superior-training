@@ -1,4 +1,4 @@
-import { readDb, parseBody, setCors } from '../_lib/db';
+import { readDb, parseBody, setCors } from '../_lib/db.js';
 
 export default async function handler(req: any, res: any) {
   setCors(res);

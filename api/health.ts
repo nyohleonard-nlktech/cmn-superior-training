@@ -1,4 +1,4 @@
-import { setCors } from './_lib/db';
+import { setCors } from './_lib/db.js';
 
 export default async function handler(req: any, res: any) {
   setCors(res);
