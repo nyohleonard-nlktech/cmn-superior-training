@@ -1,0 +1,6 @@
+{
+  "name": "CMN Superior Quality Training",
+  "description": "Bilingual (English/French) business and training platform for CMN Superior Quality Training in Yaoundé, Cameroon — hands-on production training for Soap, Chocolate, Ovaltine, and Spaghetti, plus raw materials and finished products store with WhatsApp integration and admin panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
