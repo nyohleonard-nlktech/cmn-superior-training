@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "rewrites": [
     {
       "source": "/api/registrations/:id/paid",
@@ -18,12 +17,9 @@
       "destination": "/api/products/[id]"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/(.*)",
+      "source": "/((?!api/|images/|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]
 }
+
