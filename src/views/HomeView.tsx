@@ -18,6 +18,8 @@ import {
   Phone
 } from 'lucide-react';
 import { buildGeneralInquiryWhatsAppUrl } from '../utils/whatsapp';
+import { APP_IMAGES } from '../assets/images';
+import { getOptimizedImageUrl } from '../utils/imageUrl';
 
 interface HomeViewProps {
   lang: Language;
@@ -146,7 +148,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 {/* Main featured photo frame */}
                 <div className="rounded-3xl overflow-hidden border-3 border-[#D4AF37] shadow-2xl bg-[#2B1810]">
                   <img
-                    src="/images/soap_production_1787567070599.jpg"
+                    src={APP_IMAGES.soap_production}
                     alt="Soap and Manufacturing Workshop"
                     className="w-full h-72 sm:h-84 object-cover"
                     referrerPolicy="no-referrer"
@@ -254,7 +256,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="lg:col-span-4">
             <div className="rounded-2xl overflow-hidden border-2 border-[#D4AF37]/50 shadow-lg bg-[#24140D]">
               <img
-                src="/images/chocolate_production_1787567086817.jpg"
+                src={APP_IMAGES.chocolate_production}
                 alt="Production Workshop"
                 className="w-full h-56 sm:h-64 object-cover"
                 referrerPolicy="no-referrer"
@@ -441,7 +443,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="lg:col-span-5">
             <div className="rounded-2xl overflow-hidden border-2 border-[#D4AF37]/60 shadow-lg">
               <img
-                src="/images/raw_materials_1787567125868.jpg"
+                src={APP_IMAGES.raw_materials}
                 alt="Raw Materials and Chemicals"
                 className="w-full h-64 object-cover"
                 referrerPolicy="no-referrer"

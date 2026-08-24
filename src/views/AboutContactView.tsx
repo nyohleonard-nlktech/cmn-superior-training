@@ -16,6 +16,7 @@ import {
   Compass
 } from 'lucide-react';
 import { buildGeneralInquiryWhatsAppUrl } from '../utils/whatsapp';
+import { APP_IMAGES } from '../assets/images';
 
 interface AboutContactViewProps {
   lang: Language;
@@ -90,7 +91,7 @@ export const AboutContactView: React.FC<AboutContactViewProps> = ({ lang, settin
         <div className="lg:col-span-5 space-y-4">
           <div className="rounded-3xl overflow-hidden border-3 border-[#D4AF37] shadow-2xl bg-[#24140D]">
             <img
-              src="/images/cmn_logo_1787567055631.jpg"
+              src={APP_IMAGES.cmn_logo}
               alt="CMN Crest"
               className="w-full h-80 object-cover"
               referrerPolicy="no-referrer"

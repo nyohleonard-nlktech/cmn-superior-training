@@ -1,4 +1,5 @@
 import { TrainingProgram, TrainingAnnouncement, SiteSettings } from '../types';
+import { APP_IMAGES } from '../assets/images';
 
 export const TRAINING_PROGRAMS: TrainingProgram[] = [
   {
@@ -9,7 +10,7 @@ export const TRAINING_PROGRAMS: TrainingProgram[] = [
     tagline_fr: 'Maîtrisez la fabrication de savon à froid, à chaud, de ménage et antiseptique médicamenteux',
     description_en: 'Complete hands-on training covering formulation chemistry, safe lye handling, saponification calculations, essential oils, and packaging for direct commercial sale.',
     description_fr: 'Formation pratique complète couvrant la chimie des formulations, la manipulation sécurisée de la soude, les calculs de saponification, les huiles essentielles et l’emballage commercial.',
-    image: '/images/soap_production_1787567070599.jpg',
+    image: APP_IMAGES.soap_production,
     total_steps: 7,
     highlights_en: [
       'Laundry soap bars, transparent toilet soap & liquid soap',
@@ -83,7 +84,7 @@ export const TRAINING_PROGRAMS: TrainingProgram[] = [
     tagline_fr: 'Transformez le cacao camerounais d’exception en chocolat noir raffiné, au lait et pâtes à tartiner',
     description_en: 'Learn the complete post-harvest and chocolate making chemistry: fermentation control, roasting profiles, winnowing, conching, tempering, and luxury bar molding.',
     description_fr: 'Apprenez la chaîne complète de transformation du cacao : fermentation, profils de torréfaction, concassage-vannage, conchage, tempérage et moulage de luxe.',
-    image: '/images/chocolate_craft_1787567084584.jpg',
+    image: APP_IMAGES.chocolate_craft,
     total_steps: 7,
     highlights_en: [
       'Premium Cameroonian cocoa bean processing',
@@ -157,7 +158,7 @@ export const TRAINING_PROGRAMS: TrainingProgram[] = [
     tagline_fr: 'Formulez des poudres de boisson maltée chocolatée petit-déjeuner enrichies et solubles',
     description_en: 'Master the formulation of soluble breakfast malt drinks: barley/grain malting, natural cocoa blending, vitamin fortification, moisture vacuum processing, and airtight canister packaging.',
     description_fr: 'Maîtrisez la formulation de boissons maltées solubles : maltage de céréales, mélange au cacao naturel, enrichissement vitaminé et conditionnement hermétique.',
-    image: '/images/ovaltine_malt_1787567096754.jpg',
+    image: APP_IMAGES.ovaltine_malt,
     total_steps: 5,
     highlights_en: [
       'Natural malt extract preparation & enzymatic activation',
@@ -217,7 +218,7 @@ export const TRAINING_PROGRAMS: TrainingProgram[] = [
     tagline_fr: 'Produisez des spaghettis, nouilles et macaronis dorés en semoule de blé dur de qualité industrielle',
     description_en: 'Learn commercial pasta processing: 100% durum semolina hydration, vacuum extrusion through brass dies, slow low-temperature static drying, and moisture-proof packaging.',
     description_fr: 'Apprenez la production de pâtes alimentaires : hydratation de la semoule, extrusion sous vide à travers filières bronze, séchage statique et ensachage protecteur.',
-    image: '/images/spaghetti_making_1787567110671.jpg',
+    image: APP_IMAGES.spaghetti_making,
     total_steps: 6,
     highlights_en: [
       'Durum semolina & fortification flour blends',

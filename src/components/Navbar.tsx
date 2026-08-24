@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Language, SiteSettings } from '../types';
 import { translations } from '../translations';
 import { MessageCircle, Globe, Menu, X, Sparkles, BookOpen, ShoppingBag, Info, ShieldCheck } from 'lucide-react';
+import { APP_IMAGES } from '../assets/images';
 
 interface NavbarProps {
   currentTab: string;
@@ -89,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <div className="relative w-12 h-12 rounded-full border-2 border-[#D4AF37] overflow-hidden shadow-md group-hover:border-[#E5C158] transition-colors">
               <img
-                src="/images/cmn_logo_1787567055631.jpg"
+                src={APP_IMAGES.cmn_logo}
                 alt="CMN Superior Quality Training Logo"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

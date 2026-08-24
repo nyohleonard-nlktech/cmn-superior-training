@@ -3,6 +3,7 @@ import { Language, SiteSettings } from '../types';
 import { translations } from '../translations';
 import { MessageCircle, Phone, MapPin, Mail, Sparkles, Shield, ArrowRight } from 'lucide-react';
 import { buildGeneralInquiryWhatsAppUrl } from '../utils/whatsapp';
+import { APP_IMAGES } from '../assets/images';
 
 interface FooterProps {
   lang: Language;
@@ -65,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, setCurrentTab, settings })
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full border border-[#D4AF37] overflow-hidden">
                 <img
-                  src="/images/cmn_logo_1787567055631.jpg"
+                  src={APP_IMAGES.cmn_logo}
                   alt="CMN Logo"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
