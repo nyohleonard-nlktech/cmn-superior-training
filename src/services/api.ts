@@ -97,7 +97,11 @@ export const api = {
       // fallback
     }
     const cached = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
-    return cached ? JSON.parse(cached) : (INITIAL_PRODUCTS as Product[]);
+    const prods: Product[] = cached ? JSON.parse(cached) : (INITIAL_PRODUCTS as Product[]);
+    return prods.map(p => ({
+      ...p,
+      photo_url: p.photo_url ? p.photo_url.replace(/^\/?src\/assets\/images\//, '/images/') : '/images/raw_materials_1787567125868.jpg'
+    }));
   },
 
   async createProduct(product: Omit<Product, 'id'>): Promise<Product> {

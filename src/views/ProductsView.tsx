@@ -13,6 +13,7 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { buildProductOrderWhatsAppUrl, buildGeneralInquiryWhatsAppUrl } from '../utils/whatsapp';
+import { getOptimizedImageUrl } from '../utils/imageUrl';
 
 interface ProductsViewProps {
   lang: Language;
@@ -124,10 +125,16 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
               >
                 <div>
                   {/* Photo Frame */}
-                  <div className="relative h-56 bg-[#24140D] overflow-hidden">
+                  <div className="relative h-56 bg-[#24140D] overflow-hidden flex items-center justify-center">
                     <img
-                      src={product.photo_url}
+                      src={getOptimizedImageUrl(product.photo_url)}
                       alt={name}
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (!target.src.includes('soap_production')) {
+                          target.src = '/images/soap_production_1787567070599.jpg';
+                        }
+                      }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />

@@ -38,6 +38,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { api } from '../services/api';
+import { getOptimizedImageUrl } from '../utils/imageUrl';
 import { buildAdminToRegistrantWhatsAppUrl } from '../utils/whatsapp';
 
 interface AdminViewProps {
@@ -1221,7 +1222,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
                     <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#24140D] border-2 border-[#D4AF37] overflow-hidden shrink-0 shadow-md">
                       {productForm.photo_url ? (
                         <img
-                          src={productForm.photo_url}
+                          src={getOptimizedImageUrl(productForm.photo_url)}
                           alt="Product preview"
                           className="w-full h-full object-cover"
                           referrerPolicy="no-referrer"
@@ -1335,7 +1336,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
               >
                 <div>
                   <div className="h-44 bg-[#24140D] overflow-hidden relative">
-                    <img src={prod.photo_url} alt={prod.name_en} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src={getOptimizedImageUrl(prod.photo_url)} alt={prod.name_en} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                     <div className="absolute top-2 left-2 bg-[#24140D]/90 text-[#E5C158] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase border border-[#D4AF37]/30">
                       {prod.category}
                     </div>
