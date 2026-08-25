@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { buildProductOrderWhatsAppUrl, buildGeneralInquiryWhatsAppUrl } from '../utils/whatsapp';
 import { getOptimizedImageUrl } from '../utils/imageUrl';
+import { APP_IMAGES } from '../assets/images';
 
 interface ProductsViewProps {
   lang: Language;
@@ -131,8 +132,8 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
                       alt={name}
                       onError={(e) => {
                         const target = e.currentTarget;
-                        if (!target.src.includes('soap_production')) {
-                          target.src = '/images/soap_production_1787567070599.jpg';
+                        if (target.src !== APP_IMAGES.soap_production) {
+                          target.src = APP_IMAGES.soap_production;
                         }
                       }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

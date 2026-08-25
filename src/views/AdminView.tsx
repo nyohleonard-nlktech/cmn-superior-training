@@ -39,6 +39,7 @@ import {
 } from 'lucide-react';
 import { api } from '../services/api';
 import { getOptimizedImageUrl } from '../utils/imageUrl';
+import { APP_IMAGES } from '../assets/images';
 import { buildAdminToRegistrantWhatsAppUrl } from '../utils/whatsapp';
 
 interface AdminViewProps {
@@ -371,11 +372,11 @@ export const AdminView: React.FC<AdminViewProps> = ({
   ).length;
 
   const presetPhotos = [
-    { label: 'Soap Bars', url: '/images/soap_production_1787567070599.jpg' },
-    { label: 'Raw Chemicals / Oils', url: '/images/raw_materials_1787567125868.jpg' },
-    { label: 'Chocolate Craft', url: '/images/chocolate_craft_1787567084584.jpg' },
-    { label: 'Ovaltine Powder', url: '/images/ovaltine_malt_1787567096754.jpg' },
-    { label: 'Spaghetti Pasta', url: '/images/spaghetti_making_1787567110671.jpg' }
+    { label: 'Soap Bars', url: APP_IMAGES.soap_production },
+    { label: 'Raw Chemicals / Oils', url: APP_IMAGES.raw_materials },
+    { label: 'Chocolate Craft', url: APP_IMAGES.chocolate_craft },
+    { label: 'Ovaltine Powder', url: APP_IMAGES.ovaltine_malt },
+    { label: 'Spaghetti Pasta', url: APP_IMAGES.spaghetti_making }
   ];
 
   // If not logged in, show Password prompt

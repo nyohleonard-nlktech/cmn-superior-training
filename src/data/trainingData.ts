@@ -287,7 +287,7 @@ export const INITIAL_PRODUCTS = [
     price: 2500,
     description_en: 'High-foaming, durable, premium cold-process laundry soap bars made with refined palm kernel oil. Highly effective on stubborn stains, gentle on hands.',
     description_fr: 'Pain de savon de ménage saponifié à froid, riche en mousse, très résistant. Élimine les taches tenaces tout en restant doux pour la peau.',
-    photo_url: '/images/soap_production_1787567070599.jpg',
+    photo_url: APP_IMAGES.soap_production,
     category: 'soap',
     in_stock: true,
     unit: 'Pack of 5 bars (200g each)'
@@ -299,7 +299,7 @@ export const INITIAL_PRODUCTS = [
     price: 1500,
     description_en: 'Formulated with pure shea butter, neem, turmeric, and tea tree extracts. Clarifies blemishes, fights body odor, and deeply moisturizes.',
     description_fr: 'Formulé au pur beurre de karité, neem, curcuma et extrait d’arbre à thé. Purifie le teint, combat les imperfections et hydrate intensément.',
-    photo_url: '/images/soap_production_1787567070599.jpg',
+    photo_url: APP_IMAGES.soap_production,
     category: 'soap',
     in_stock: true,
     unit: '150g bar'
@@ -311,7 +311,7 @@ export const INITIAL_PRODUCTS = [
     price: 3500,
     description_en: 'Laboratory grade high-purity caustic soda flakes for soap manufacturing. Guaranteed 99% purity for reliable saponification and zero free lye.',
     description_fr: 'Soude caustique en écailles de qualité industrielle supérieure 99% de pureté. Idéale pour une saponification parfaite sans résidu caustique.',
-    photo_url: '/images/raw_materials_1787567125868.jpg',
+    photo_url: APP_IMAGES.raw_materials,
     category: 'raw_material',
     in_stock: true,
     unit: '1 kg container'
@@ -323,7 +323,7 @@ export const INITIAL_PRODUCTS = [
     price: 7500,
     description_en: 'High lauric acid content oil essential for intense foaming, rock-hard soap bars, and rapid trace formation in commercial soap production.',
     description_fr: 'Huile riche en acide laurique indispensable pour obtenir un savon dur, résistant à l’eau et doté d’un pouvoir moussant exceptionnel.',
-    photo_url: '/images/raw_materials_1787567125868.jpg',
+    photo_url: APP_IMAGES.raw_materials,
     category: 'raw_material',
     in_stock: true,
     unit: '5 Litres Bidon'
@@ -335,7 +335,7 @@ export const INITIAL_PRODUCTS = [
     price: 6000,
     description_en: 'Aromatic food and cosmetic grade 100% natural cocoa butter extracted from select Cameroonian cocoa beans. Perfect for chocolate & skincare.',
     description_fr: 'Beurre de cacao 100% naturel pressé à partir de fèves camerounaises sélectionnées. Grade alimentaire et cosmétique haut de gamme.',
-    photo_url: '/images/chocolate_craft_1787567084584.jpg',
+    photo_url: APP_IMAGES.chocolate_craft,
     category: 'food_ingredients',
     in_stock: true,
     unit: '1 kg block'
@@ -347,7 +347,7 @@ export const INITIAL_PRODUCTS = [
     price: 4500,
     description_en: 'Concentrated cosmetic fragrances resistant to high lye pH. Gives your soaps a long-lasting, luxury commercial fragrance.',
     description_fr: 'Parfums cosmétiques concentrés résistant au pH de la soude. Procure une fragrance durable et luxueuse à vos créations.',
-    photo_url: '/images/raw_materials_1787567125868.jpg',
+    photo_url: APP_IMAGES.raw_materials,
     category: 'raw_material',
     in_stock: true,
     unit: '3 x 100ml bottles'
@@ -359,7 +359,7 @@ export const INITIAL_PRODUCTS = [
     price: 18000,
     description_en: 'Heavy-duty 1.5kg capacity soap mold with food-grade silicone insert and stainless steel adjustable wire soap cutter for clean, even bars.',
     description_fr: 'Moule professionnel 1,5 kg avec insert silicone alimentaire et coupeur réglable en fil inox pour des découpes nettes et uniformes.',
-    photo_url: '/images/soap_production_1787567070599.jpg',
+    photo_url: APP_IMAGES.soap_production,
     category: 'equipment',
     in_stock: true,
     unit: 'Complete Set'
