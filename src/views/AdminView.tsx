@@ -35,12 +35,16 @@ import {
   ArrowRight,
   UserCheck,
   CreditCard,
-  GraduationCap
+  GraduationCap,
+  Loader2,
+  UploadCloud,
+  AlertTriangle
 } from 'lucide-react';
 import { api } from '../services/api';
 import { getOptimizedImageUrl } from '../utils/imageUrl';
 import { APP_IMAGES } from '../assets/images';
 import { buildAdminToRegistrantWhatsAppUrl } from '../utils/whatsapp';
+import { uploadProductImage, isSupabaseConfigured, BUCKET_NAME } from '../utils/storage';
 
 interface AdminViewProps {
   lang: Language;
@@ -108,6 +112,9 @@ export const AdminView: React.FC<AdminViewProps> = ({
     in_stock: true,
     unit: '1 unit'
   });
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
+  const [photoUploadError, setPhotoUploadError] = useState<string | null>(null);
+  const [photoUploadSuccess, setPhotoUploadSuccess] = useState(false);
 
   // Password Change State
   const [newPassword, setNewPassword] = useState('');
@@ -228,20 +235,30 @@ export const AdminView: React.FC<AdminViewProps> = ({
     }
   };
 
-  // Handle image upload via FileReader
-  const handlePhotoFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Handle direct binary image upload via Supabase Storage
+  const handlePhotoFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (reader.result) {
-          setProductForm(prev => ({
-            ...prev,
-            photo_url: reader.result as string
-          }));
-        }
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    setIsUploadingPhoto(true);
+    setPhotoUploadError(null);
+    setPhotoUploadSuccess(false);
+
+    try {
+      const publicUrl = await uploadProductImage(file);
+      setProductForm(prev => ({
+        ...prev,
+        photo_url: publicUrl
+      }));
+      setPhotoUploadSuccess(true);
+      setTimeout(() => setPhotoUploadSuccess(false), 5000);
+    } catch (err: any) {
+      console.error('Binary image upload failed:', err);
+      setPhotoUploadError(err.message || 'Failed to upload image to Supabase Storage.');
+    } finally {
+      setIsUploadingPhoto(false);
+      // Reset input value so same file can be re-selected if required
+      e.target.value = '';
     }
   };
 
@@ -1214,13 +1231,47 @@ export const AdminView: React.FC<AdminViewProps> = ({
 
                 {/* Photo replacement & upload */}
                 <div className="space-y-3 p-4 rounded-2xl bg-[#F8F2E9] border border-[#E0D0BE]">
-                  <label className="block text-xs font-bold text-[#8A5B18] uppercase tracking-wider">
-                    {lang === 'fr' ? 'Photo de l’Article (Téléversement ou URL)' : 'Product Photo (Upload new file or choose URL)'}
-                  </label>
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <label className="block text-xs font-bold text-[#8A5B18] uppercase tracking-wider">
+                      {lang === 'fr' ? 'Photo de l’Article (Supabase Storage ou URL)' : 'Product Photo (Supabase Storage or CDN URL)'}
+                    </label>
+                    <span className="text-[11px] px-2 py-0.5 rounded-full font-medium bg-[#EAE0D2] text-[#5C4537]">
+                      {isSupabaseConfigured() 
+                        ? `Supabase: ${BUCKET_NAME} (Max 5MB)` 
+                        : (lang === 'fr' ? 'Supabase non configuré (utilisez URL directe)' : 'Supabase not configured (use direct URL)')}
+                    </span>
+                  </div>
+
+                  {/* Upload error banner */}
+                  {photoUploadError && (
+                    <div className="p-3 rounded-xl bg-amber-50 border border-amber-300 text-xs text-amber-900 space-y-1 animate-in fade-in duration-200">
+                      <div className="flex items-center gap-1.5 font-bold">
+                        <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0" />
+                        <span>{photoUploadError}</span>
+                      </div>
+                      <p className="text-[11px] text-amber-800 leading-relaxed">
+                        {lang === 'fr'
+                          ? 'Vérifiez que VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY sont définis dans votre fichier .env et que le bucket "product-assets" autorise les téléversements publics.'
+                          : 'Ensure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are defined in your environment variables, and the "product-assets" storage bucket is created with public read access in Supabase.'}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Upload success banner */}
+                  {photoUploadSuccess && (
+                    <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center gap-2 animate-in fade-in duration-200">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span className="font-semibold">
+                        {lang === 'fr'
+                          ? 'Fichier binaire téléversé avec succès sur Supabase CDN !'
+                          : 'Binary image uploaded to Supabase CDN successfully!'}
+                      </span>
+                    </div>
+                  )}
 
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                     {/* Live Preview */}
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#24140D] border-2 border-[#D4AF37] overflow-hidden shrink-0 shadow-md">
+                    <div className={`w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#24140D] border-2 border-[#D4AF37] overflow-hidden shrink-0 shadow-md relative ${isUploadingPhoto ? 'animate-pulse' : ''}`}>
                       {productForm.photo_url ? (
                         <img
                           src={getOptimizedImageUrl(productForm.photo_url)}
@@ -1234,24 +1285,44 @@ export const AdminView: React.FC<AdminViewProps> = ({
                           <span>No Image</span>
                         </div>
                       )}
+                      {isUploadingPhoto && (
+                        <div className="absolute inset-0 bg-black/60 backdrop-blur-xs flex flex-col items-center justify-center text-[#E5C158]">
+                          <Loader2 className="w-6 h-6 animate-spin mb-1" />
+                          <span className="text-[9px] font-bold">Uploading</span>
+                        </div>
+                      )}
                     </div>
 
                     {/* Upload button & presets */}
-                    <div className="space-y-2 flex-1">
+                    <div className="space-y-2 flex-1 w-full">
                       <div className="flex flex-wrap items-center gap-2">
-                        <label className="px-4 py-2 rounded-xl bg-[#24140D] hover:bg-[#3D2214] text-[#E5C158] font-bold text-xs shadow cursor-pointer flex items-center gap-2 transition-colors">
-                          <Upload className="w-4 h-4" />
-                          <span>{lang === 'fr' ? 'Téléverser une Nouvelle Photo' : 'Upload New Photo'}</span>
+                        <label className={`px-4 py-2.5 rounded-xl text-xs font-bold shadow flex items-center gap-2 transition-all ${
+                          isUploadingPhoto 
+                            ? 'bg-[#3D2214] text-[#E5C158]/70 cursor-not-allowed'
+                            : 'bg-[#24140D] hover:bg-[#3D2214] text-[#E5C158] cursor-pointer'
+                        }`}>
+                          {isUploadingPhoto ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin text-[#E5C158]" />
+                              <span>{lang === 'fr' ? 'Téléversement en cours...' : 'Uploading to Supabase...'}</span>
+                            </>
+                          ) : (
+                            <>
+                              <UploadCloud className="w-4 h-4" />
+                              <span>{lang === 'fr' ? 'Téléverser Image (Supabase)' : 'Upload to Supabase'}</span>
+                            </>
+                          )}
                           <input
                             type="file"
                             accept="image/*"
+                            disabled={isUploadingPhoto}
                             onChange={handlePhotoFileUpload}
                             className="hidden"
                           />
                         </label>
 
                         <span className="text-xs text-[#735A4A]">
-                          {lang === 'fr' ? 'ou choisissez une photo rapide :' : 'or choose a preset image:'}
+                          {lang === 'fr' ? 'ou choisissez une photo prédéfinie :' : 'or choose a preset:'}
                         </span>
                       </div>
 
@@ -1273,13 +1344,20 @@ export const AdminView: React.FC<AdminViewProps> = ({
                         ))}
                       </div>
 
-                      <input
-                        type="text"
-                        value={productForm.photo_url}
-                        onChange={e => setProductForm({ ...productForm, photo_url: e.target.value })}
-                        placeholder={t.products_manager.photo_url}
-                        className="w-full px-3 py-2 rounded-xl bg-[#FFFDF9] border border-[#D9C4B0] text-xs text-[#24140D] outline-none"
-                      />
+                      <div className="space-y-1">
+                        <input
+                          type="text"
+                          value={productForm.photo_url}
+                          onChange={e => setProductForm({ ...productForm, photo_url: e.target.value })}
+                          placeholder={t.products_manager.photo_url}
+                          className="w-full px-3 py-2 rounded-xl bg-[#FFFDF9] border border-[#D9C4B0] text-xs text-[#24140D] outline-none font-mono"
+                        />
+                        <p className="text-[10px] text-[#735A4A]">
+                          {lang === 'fr' 
+                            ? 'Lien CDN public permanent ou URL externe (ex: https://.../product-assets/...)'
+                            : 'Permanent public CDN URL or external image link (e.g. https://.../product-assets/...)'}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
